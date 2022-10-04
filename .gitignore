@@ -4,6 +4,7 @@
 
 *
 !.gitignore
+!/lvim
 /vim/undodir
 !/vim
 !.vimrc
