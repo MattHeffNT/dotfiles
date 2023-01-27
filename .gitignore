@@ -1,14 +1,2 @@
 # this is like a reverse git ignore logic... just so I don't inluce entire
 # folder
-
-
-*
-!.gitignore
-!/lvim
-/vim/undodir
-!/vim
-!.vimrc
-!.bashrc
-!.bash_profile
-!/bashscripts
-!.zshrc
