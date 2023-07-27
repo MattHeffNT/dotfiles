@@ -1,3 +1,7 @@
+-- Read the docs: https://www.lunarvim.org/docs/configuration
+-- Video Tutorials: https://www.youtube.com/watch?v=sFA9kX-Ud_c&list=PLhoH5vyxr6QqGu0i7tt_XoVK9v-KvZ3m6
+-- Forum: https://www.reddit.com/r/lunarvim/
+-- Discord: https://discord.com/invite/Xb9B4Ny
 --[[
 lvim is the global options object
 
@@ -177,26 +181,50 @@ lvim.plugins = {
     cmd = "TroubleToggle",
   },
   {
-    "p00f/nvim-ts-rainbow",
-  },
-  {
-    "folke/tokyonight.nvim"
-  },
-  {
-    "tzachar/cmp-tabnine",
-    run = "./install.sh",
-    requires = "hrsh7th/nvim-cmp",
+    "aca/emmet-ls",
     config = function()
-      local tabnine = require "cmp_tabnine.config"
-      tabnine:setup {
-        max_lines = 1000,
-        max_num_results = 10,
-        sort = true,
+      local lspconfig = require("lspconfig")
+      local configs = require("lspconfig/configs")
+
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
+      capabilities.textDocument.completion.completionItem.resolveSupport = {
+        properties = {
+          "documentation",
+          "detail",
+          "additionalTextEdits",
+        },
       }
+
+      if not lspconfig.emmet_ls then
+        configs.emmet_ls = {
+          default_config = {
+            cmd = { "emmet-ls", "--stdio" },
+            filetypes = {
+              "html",
+              "css",
+              "javascript",
+              "typescript",
+              "eruby",
+              "typescriptreact",
+              "javascriptreact",
+              "svelte",
+              "vue",
+            },
+            root_dir = function(fname)
+              return vim.loop.cwd()
+            end,
+            settings = {},
+          },
+        }
+      end
+      lspconfig.emmet_ls.setup({ capabilities = capabilities })
     end,
-    opt = true,
-    event = "InsertEnter",
   },
+
+  require("lvim.lsp.manager").setup("emmet_ls")
+
+
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
