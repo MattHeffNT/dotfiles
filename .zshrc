@@ -5,7 +5,7 @@
 # 1. First you check if a tmux session exists with a given name.
 # tmux has-session -t=$session_name 2> /dev/null
 
-# 2. Create the session if it doesn't exists.
+# 2. Create the session if it doesn't exiusts.
 # if [[ $? -ne 0 ]]; then
 #   TMUX='' tmux new-session -d -s "$session_name"
 # fi
@@ -135,14 +135,22 @@ ZVM_VI_INSERT_ESCAPE_BINDKEY=jj
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls="ls -a --color --group-directories-first"
 
+# function to call git file download script
+dl_git_files() {
+    $HOME/dotfiles/git_download.sh "$@"
+}
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # brew package manager
@@ -159,7 +167,6 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export CAPACITOR_ANDROID_STUDIO_PATH=$PATH:$ANDROID_HOME/platform-tools/
 
-
 export ANDROID_SDK_ROOT=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/Android/Sdk
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
@@ -167,11 +174,17 @@ export PATH=$PATH:$JAVA_HOME/bin
 export PATH=$PATH:/opt/gradle/gradle-7.5.1/bin
 
 # Android paths for Buck
-export PATH=$PATH:/$HOME/Android/android-ndk-r25
-export NDK_HOME=/$HOME/myuser/Android/android-ndk-r25
+#export PATH=$PATH:/$HOME/Android/android-ndk-r25
+#export NDK_HOME=/$HOME/myuser/Android/android-ndk-r25
 
 # buck path 
-export PATH=$PATH:/$HOME/Desktop/buck/bin/
+#export PATH=$PATH:/$HOME/Desktop/buck/bin/
 #export ANDROID_NDK=$HOME/Android/Sdk
 #export NDK_HOME=$HOME/Android/Sdk
 
+#lunarvim
+export PATH=/home/heffa/.local/bin:$PATH
+source /home/heffa/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+#custom script
+export PATH="$HOME/dotfiles:$PATH"
