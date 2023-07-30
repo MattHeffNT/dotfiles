@@ -39,7 +39,6 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -134,6 +133,7 @@ ZVM_VI_INSERT_ESCAPE_BINDKEY=jj
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls="ls -a --color --group-directories-first"
+alias gh-pages='node $HOME/dotfiles/create_github_pages_workflow.js'
 
 # function to call git file download script
 dl_git_files() {
