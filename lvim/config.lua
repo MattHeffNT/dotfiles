@@ -30,6 +30,15 @@ lvim.keys.insert_mode["jj"] = "<Esc>"
 lvim.keys.visual_mode["<Tab>"] = ">gv"
 lvim.keys.visual_mode["<S-Tab>"] = "<gv"
 
+-- tab and shift tab indent in insert mode
+lvim.keys.insert_mode["<Tab>"] = "<Tab>"
+lvim.keys.insert_mode["<S-Tab>"] = "<Tab>"
+
+lvim.keys.insert_mode["<Tab>"] = "<C-t>"
+lvim.keys.insert_mode["<S-Tab>"] = "<C-d>"
+
+
+
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 -- unmap a default keymapping
