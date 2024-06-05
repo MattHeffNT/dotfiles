@@ -2,7 +2,12 @@
     link:
       relink: true
 
-- clean: ['~']
+- clean:
+    - ~/.tmux.conf
+    - ~/.vim
+    - ~/.vimrc
+    - ~/.bashrc
+    - ~/.zshrc
 
 - link:
     ~/.tmux.conf: tmux.conf
