@@ -99,7 +99,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git web-search zsh-vi-mode copypath zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git web-search zsh-vi-mode copypath zsh-autosuggestions zsh-syntax-highlighting eza)
  # plugins=(zsh-vi-mode copypath )
 
 source $ZSH/oh-my-zsh.sh
@@ -138,7 +138,7 @@ alias gh-pages='node $HOME/dotfiles/create_github_pages_workflow.js'
 alias neofetch="macchina"
 alias updateAll="sudo nala update && sudo nala upgrade"
 alias cat="batcat"
-
+alias ls="eza --icons -a --group-directories-first"
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
@@ -156,13 +156,21 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-export CAPACITOR_ANDROID_STUDIO_PATH=$PATH:$ANDROID_HOME/platform-tools/
+export CAPACITOR_ANDROID_STUDIO_PATH=$ANDROID_HOME/platform-tools/
 
 export ANDROID_SDK_ROOT=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/Android/Sdk
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+
+#Java JDK
+export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
 export PATH=$PATH:$JAVA_HOME/bin
+
+#Gradle
 export PATH=$PATH:/opt/gradle/gradle-7.5.1/bin
+
+#Android Studio
+export ANDROID_STUDIO_HOME=~/android-studio
+export PATH=$PATH:$ANDROID_STUDIO_HOME/bin
 
 # Neovim
 export PATH="/opt/nvim/nvim:$PATH"
@@ -172,6 +180,9 @@ export PATH=/home/heffa/.local/bin:$PATH
 
 #custom script
 export PATH="$HOME/dotfiles:$PATH"
+
+# Eza an advanced LS
+export FPATH="<path_to_eza>/completions/zsh:$FPATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

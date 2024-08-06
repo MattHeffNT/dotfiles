@@ -20,6 +20,7 @@ lvim.colorscheme = "tokyonight"
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 vim.opt.relativenumber = true
+vim.opt.timeoutlen = 350
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -159,7 +160,7 @@ formatters.setup {
     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
     extra_args = { "--print-width=100", "--semi=true", "--trailing-comma=es5", "--single-quote" },
     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-    filetypes = { "html", "css", "typescript", "typescriptreact", "javascript", "javascriptreact" },
+    filetypes = { "html", "css", "typescript", "typescriptreact", "javascript", "javascriptreact", "js" },
   },
 }
 
