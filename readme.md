@@ -10,3 +10,6 @@ The Chezmoi userguide is also extensive and there are ways in which you can set 
 
 Anyway, I'm excited to try this for now. 
 
+---
+
+- on a new machine run setup.sh to download homebrew then install and apply chezmoi

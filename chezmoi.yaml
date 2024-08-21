@@ -1,0 +1,8 @@
+# ~/.local/share/chezmoi/chezmoi.yaml
+hooks:
+  post-apply:
+    - script: ~/.local/share/chezmoi/.chezmoiscripts/check-powerlevel10k.sh
+    - script: ~/.local/share/chezmoi/.chezmoiscripts/check-bat.sh
+    - script: ~/.local/share/chezmoi/.chezmoiscripts/check-eza.sh
+    - script: ~/.local/share/chezmoi/.chezmoiscripts/manage-omz-plugins.sh
+    - script: ~/.local/share/chezmoi/.chezmoiscripts/check-tpm.sh

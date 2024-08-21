@@ -25,6 +25,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -100,7 +101,6 @@ ENABLE_CORRECTION="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git web-search zsh-vi-mode copypath zsh-autosuggestions zsh-syntax-highlighting eza)
- # plugins=(zsh-vi-mode copypath )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -133,12 +133,12 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ls="ls -a --color --group-directories-first"
+#alias ls="ls -a --color --group-directories-first"
 alias gh-pages='node $HOME/dotfiles/create_github_pages_workflow.js'
 alias neofetch="macchina"
 alias updateAll="sudo nala update && sudo nala upgrade"
 alias cat="batcat"
-alias ls="eza --icons -a --group-directories-first"
+alias ls="eza --icons=always -a --group-directories-first --colour=always"
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
