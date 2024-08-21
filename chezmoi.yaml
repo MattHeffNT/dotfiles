@@ -6,3 +6,6 @@ hooks:
     - script: ~/.local/share/chezmoi/.chezmoiscripts/check-eza.sh
     - script: ~/.local/share/chezmoi/.chezmoiscripts/manage-omz-plugins.sh
     - script: ~/.local/share/chezmoi/.chezmoiscripts/check-tpm.sh
+    - script: ~/.local/share/chezmoi/.chezmoiscripts/check-nala.sh
+    - script: ~/.local/share/chezmoi/.chezmoiscripts/check-packages.sh
+    - script: ~/.local/share/chezmoi/.chezmoiscripts/check-lvim.sh
