@@ -1,38 +1,32 @@
+install_zsh() {
 
-#!/bin/bash
-
-install_omz() {
-
+  # zsh install
   if ! command -v zsh &> /dev/null; then
-    echo "zsh not found. Installing..."
 
-    #install zsh 
-    sudo apt-get update && sudo apt install zsh
+	  echo "zsh not found. Installing..." 
 
-    #Make zsh the default shell
-    chsh -s $(which zsh)
+	  #install zsh 
+	  sudo apt-get update && sudo apt install zsh 
+	  
+	  #Make zsh the default shell 
+	  chsh -s $(which zsh)
 
-    echo "zsh installation complete"
+    	  echo "zsh installation complete"
+
   else
+
     echo "zsh is already installed"
-  fi
 
-  if ! command -v omz &> /dev/null; then
-   echo "omz not found, installing ..."
-
-   #install omz
-   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-   echo "omz installation complete"
-  else
-    echo "omz is already installed"
   fi
 
 }
 
 # Function to install Homebrew and packages
+
 install_homebrew_and_packages() {
+
   # Check if Homebrew is installed
+  
   if ! command -v brew &> /dev/null; then
     echo "Homebrew not found. Installing..."
 
@@ -40,51 +34,38 @@ install_homebrew_and_packages() {
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
     # Add Homebrew to PATH in ~/.bashrc or ~/.zshrc
-    # Adjust according to the shell you're using
-    if [ -n "$ZSH_VERSION" ]; then
       echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.zshrc
       source ~/.zshrc
-    elif [ -n "$BASH_VERSION" ]; then
-      echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc
-      source ~/.bashrc
-    else
-      echo "Unsupported shell. Please add Homebrew to your PATH manually."
-      return 1
-    fi
-
-    # # Check if Homebrew was installed successfully
-    # if ! command -v brew &> /dev/null; then
-    #   echo "Failed to install Homebrew. Exiting."
-    #   return 1
-    # fi
 
     echo "Homebrew installed successfully."
 
     # Define the list of packages to install
-    PACKAGES=(
-      chezmoi
-      # Add other packages as needed
-    )
+    brew install chezmoi
 
-    # Install or upgrade packages
-    echo "Installing Homebrew packages..."
-    for pkg in "${PACKAGES[@]}"; do
-      echo "Installing $pkg..."
-      brew install "$pkg" || echo "Failed to install $pkg"
-    done
+
+  else
+
+    echo "Homebrew is already installed."
+
+    # check if chezmoi installed and if not install it
+    if ! command -v chezmoi &> /dev/null; then
+	    brew install chezmoi
 
     echo "Homebrew packages installation complete."
-  else
-    echo "Homebrew is already installed."
+
+   else
+	echo "chezmoi already installed"
+   fi
   fi
 }
 
 
 # Function to apply chezmoi configuration
+
 apply_chezmoi() {
+
   # Check if chezmoi is installed
-  if ! command -v chezmoi &> /dev/null; then
-    echo "error with the chezmoi install"
+  if command -v chezmoi &> /dev/null; then
 
   # Apply chezmoi configuration
     echo "Applying chezmoi configuration..."
@@ -92,10 +73,12 @@ apply_chezmoi() {
     chezmoi apply
 
     echo "chezmoi configuration applied successfully."
+  else
+	  echo "hmm chezmoi issues"
   fi
 }
 
 # Main script execution
-install_omz
+install_zsh
 install_homebrew_and_packages
 apply_chezmoi
