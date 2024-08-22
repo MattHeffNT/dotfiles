@@ -68,6 +68,9 @@ install_homebrew_and_packages() {
   else
     echo "Homebrew is already installed."
   fi
+
+  source ~/.zshrc
+
 }
 
 # Function to apply chezmoi configuration
@@ -75,15 +78,14 @@ apply_chezmoi() {
   # Check if chezmoi is installed
   if ! command -v chezmoi &> /dev/null; then
     echo "error with the chezmoi install"
-    exit 1
-  fi
 
   # Apply chezmoi configuration
-  echo "Applying chezmoi configuration..."
-  chezmoi init
-  chezmoi apply
+    echo "Applying chezmoi configuration..."
+    chezmoi init
+    chezmoi apply
 
-  echo "chezmoi configuration applied successfully."
+    echo "chezmoi configuration applied successfully."
+  fi
 }
 
 # Main script execution
