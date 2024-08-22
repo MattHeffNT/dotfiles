@@ -39,14 +39,23 @@ install_homebrew_and_packages() {
     # Install Homebrew
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-    #Add Homebrew to path
-    (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/osboxes/.bashrc
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv) >> source ~/.bashrc"
+    # Add Homebrew to PATH in ~/.bashrc or ~/.zshrc
+    # Adjust according to the shell you're using
+    if [ -n "$ZSH_VERSION" ]; then
+      echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.zshrc
+      source ~/.zshrc
+    elif [ -n "$BASH_VERSION" ]; then
+      echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc
+      source ~/.bashrc
+    else
+      echo "Unsupported shell. Please add Homebrew to your PATH manually."
+      return 1
+    fi
 
-    # Check if Homebrew was installed successfully
+    # # Check if Homebrew was installed successfully
     # if ! command -v brew &> /dev/null; then
     #   echo "Failed to install Homebrew. Exiting."
-    #   exit 1
+    #   return 1
     # fi
 
     echo "Homebrew installed successfully."
@@ -68,10 +77,8 @@ install_homebrew_and_packages() {
   else
     echo "Homebrew is already installed."
   fi
-
-  source ~/.zshrc
-
 }
+
 
 # Function to apply chezmoi configuration
 apply_chezmoi() {
