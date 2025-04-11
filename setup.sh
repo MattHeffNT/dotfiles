@@ -39,7 +39,6 @@ install_homebrew_and_packages() {
 
     echo "Homebrew installed successfully."
 
-    # Define the list of packages to install
     brew install chezmoi
 
 
@@ -58,7 +57,6 @@ install_homebrew_and_packages() {
    fi
   fi
 }
-
 
 # Function to apply chezmoi configuration
 
