@@ -1,11 +1,13 @@
-# ~/.local/share/chezmoi/chezmoi.yaml
+sourceDir: ~/dotfiles
 hooks:
   post-apply:
-    - script: ~/.local/share/chezmoi/.chezmoiscripts/check-powerlevel10k.sh
-    - script: ~/.local/share/chezmoi/.chezmoiscripts/check-bat.sh
-    - script: ~/.local/share/chezmoi/.chezmoiscripts/check-eza.sh
-    - script: ~/.local/share/chezmoi/.chezmoiscripts/manage-omz-plugins.sh
-    - script: ~/.local/share/chezmoi/.chezmoiscripts/check-tpm.sh
-    - script: ~/.local/share/chezmoi/.chezmoiscripts/check-nala.sh
-    - script: ~/.local/share/chezmoi/.chezmoiscripts/check-packages.sh
-    - script: ~/.local/share/chezmoi/.chezmoiscripts/check-nvim.sh
+    script: |
+      ~/dotfiles/.chezmoiscripts/check-powerlevel10k.sh
+      ~/dotfiles/.chezmoiscripts/check-bat.sh
+      ~/dotfiles/.chezmoiscripts/check-eza.sh
+      ~/dotfiles/.chezmoiscripts/manage-omz-plugins.sh
+      ~/dotfiles/.chezmoiscripts/check-tpm.sh
+      ~/dotfiles/.chezmoiscripts/check-nala.sh
+      ~/dotfiles/.chezmoiscripts/check-packages.sh
+      ~/dotfiles/.chezmoiscripts/check-nvim.sh
+
