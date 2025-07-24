@@ -75,6 +75,10 @@ apply_chezmoi() {
   fi
 }
 
+# symlink the chezmoi.yaml in dotfiles repo to local .config
+mkdir -p ~/.config/chezmoi
+ln -sf ~/dotfiles/chezmoi.yaml ~/.config/chezmoi/chezmoi.yaml
+
 # Main script execution
 install_zsh
 install_homebrew_and_packages
