@@ -1,12 +1,15 @@
-### Heff's Dotfiles
+### 🛠️ Heff's Dotfiles
+  This repo contains my personal dotfiles managed with [chezmoi](https://www.chezmoi.io). It includes configuration for:
+    - Zsh + Oh My Zsh + Powerlevel10k
+    - Tmux
+    - Homebrew (Linuxbrew)
+    - Automatic provisioning scripts using `.chezmoiscripts`
+    - Neovim with LazyVim (and customisations)
 
-Now managed through [Chezmoi](https://www.chezmoi.io/).
+  ---
 
-As the name suggests, it's where I keep my precious dotfiles and can sync them across devices/VMs etc. 
-
----
-
-### Install and Use
-
-- On a new machine clone the repo then run setup.sh to download homebrew and install and apply chezmoi.
-- This should also run Chezmoi apply
+  ## 🚀 Quick Setup (first-time only)
+  If you're setting up a fresh machine, run:
+  ```bash
+  chezmoi init --source ~/dotfiles --apply
+  Heff's Dotfiles
