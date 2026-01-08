@@ -28,9 +28,9 @@ ZVM_VI_INSERT_ESCAPE_BINDKEY=jj
 
 # Preferred editor (local or SSH)
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='lvim'
+  export EDITOR='nvim'
 else
-  export EDITOR='lvim'
+  export EDITOR='nvim'
 fi
 
 # Aliases
@@ -52,3 +52,12 @@ export NVM_DIR="${XDG_CONFIG_HOME:-$HOME/.nvm}"
 # Source powerlevel10k config if it exists
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# pnpm
+export PNPM_HOME="/home/heffa/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
