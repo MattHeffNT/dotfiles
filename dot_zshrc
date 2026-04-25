@@ -54,6 +54,12 @@ export NVM_DIR="${XDG_CONFIG_HOME:-$HOME/.nvm}"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+# replaces the ctrl + r
+function zvm_after_init() {
+  source <(fzf --zsh)
+}
+
+
 # pnpm
 export PNPM_HOME="/home/heffa/.local/share/pnpm"
 case ":$PATH:" in

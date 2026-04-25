@@ -1,13 +1,2 @@
 sourceDir: ~/dotfiles
-hooks:
-  post-apply:
-    script: |
-      ~/dotfiles/.chezmoiscripts/check-powerlevel10k.sh
-      ~/dotfiles/.chezmoiscripts/check-bat.sh
-      ~/dotfiles/.chezmoiscripts/check-eza.sh
-      ~/dotfiles/.chezmoiscripts/manage-omz-plugins.sh
-      ~/dotfiles/.chezmoiscripts/check-tpm.sh
-      ~/dotfiles/.chezmoiscripts/check-nala.sh
-      ~/dotfiles/.chezmoiscripts/check-packages.sh
-      ~/dotfiles/.chezmoiscripts/check-nvim.sh
 
