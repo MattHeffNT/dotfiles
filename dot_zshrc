@@ -40,6 +40,7 @@ alias updateAll="sudo nala update && sudo nala upgrade"
 alias cat="batcat"
 alias ls="eza --icons=always -a --group-directories-first --colour=always"
 alias lvim="nvim"
+alias clip="xclip selection clipboard"
 
 # Load nvm if installed
 export NVM_DIR="${XDG_CONFIG_HOME:-$HOME/.nvm}"
