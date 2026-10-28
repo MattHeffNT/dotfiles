@@ -53,7 +53,11 @@ export NVM_DIR="${XDG_CONFIG_HOME:-$HOME/.nvm}"
 # Source powerlevel10k config if it exists
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# Homebrew (macOS arm/intel or Linuxbrew)
+for _brew in /opt/homebrew/bin/brew /usr/local/bin/brew /home/linuxbrew/.linuxbrew/bin/brew; do
+  [[ -x $_brew ]] && { eval "$($_brew shellenv)"; break; }
+done
+unset _brew
 
 # replaces the ctrl + r
 function zvm_after_init() {
@@ -62,7 +66,7 @@ function zvm_after_init() {
 
 
 # pnpm
-export PNPM_HOME="/home/heffa/.local/share/pnpm"
+[[ "$OSTYPE" == darwin* ]] && export PNPM_HOME="$HOME/Library/pnpm" || export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
