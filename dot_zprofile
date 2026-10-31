@@ -35,3 +35,8 @@ elif test -d /home/linuxbrew/.linuxbrew; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+
+
+# Added by Toolbox App
+export PATH="$PATH:/home/heffa/.local/share/JetBrains/Toolbox/scripts"
+

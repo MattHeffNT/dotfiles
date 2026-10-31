@@ -6,7 +6,11 @@ install_zsh() {
     echo "zsh not found. Installing..."
 
     #install zsh
-    sudo apt-get update && sudo apt install zsh
+    if command -v pacman &> /dev/null; then
+      sudo pacman -Sy --needed zsh cachyos-zsh-config
+    else
+      sudo apt-get update && sudo apt install zsh
+    fi
 
     #Make zsh the default shell
     chsh -s $(which zsh)

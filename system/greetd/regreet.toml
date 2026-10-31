@@ -1,0 +1,27 @@
+# ReGreet config — installed to /etc/greetd/ by ./install.sh (not managed by chezmoi apply)
+
+[background]
+path = "/usr/share/backgrounds/login.png"
+fit = "Cover"
+
+[GTK]
+application_prefer_dark_theme = true
+theme_name = "Tokyonight-Dark"
+icon_theme_name = "Tokyonight-Dark"
+cursor_theme_name = "Adwaita"
+cursor_blink = true
+font_name = "MesloLGS Nerd Font 13"
+
+[appearance]
+greeting_msg = "welcome back"
+
+[widget.clock]
+format = "%A %d %B  ·  %H:%M"
+resolution = "500ms"
+label_width = 320
+# system locale "en-AU" fails to parse, so set it explicitly
+locale = "en_AU"
+
+[commands]
+reboot = [ "systemctl", "reboot" ]
+poweroff = [ "systemctl", "poweroff" ]

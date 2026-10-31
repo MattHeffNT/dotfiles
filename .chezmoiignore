@@ -1,0 +1,6 @@
+# repo-only files — don't deploy into $HOME
+system
+CLAUDE.md
+readme.md
+setup.sh
+chezmoi.yaml

@@ -42,7 +42,7 @@ Files in `.chezmoiscripts/` named `run_once_after_*` run exactly once after `che
 ## Architecture
 
 ### Shell (`dot_zshrc`)
-Oh My Zsh with Powerlevel10k theme. Notable plugins: `zsh-vi-mode` (with `jj` as insert-escape), `zsh-autosuggestions`, `zsh-syntax-highlighting`, `eza`. `cat` is aliased to `batcat`, `ls` to `eza`.
+Oh My Zsh with Powerlevel10k theme. Notable plugins: `zsh-vi-mode` (with `jj` as insert-escape), `zsh-autosuggestions`, `zsh-syntax-highlighting`, `eza`. `cat` is aliased to `bat`, `ls` to `eza`.
 
 ### Tmux (`dot_tmux.conf`)
 TPM-managed plugins: `tmux-sensible`, `tmux-resurrect` (with nvim session restore), `dracula/tmux` theme. Vim-style pane navigation (`h/j/k/l`) and `Alt+hjkl` without prefix.
