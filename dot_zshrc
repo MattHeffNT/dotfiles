@@ -29,14 +29,13 @@ ZVM_VI_INSERT_ESCAPE_BINDKEY=jj
 # Preferred editor (local or SSH)
 export EDITOR='nvim'
 export VISUAL='nvim'
-# nvim is from Homebrew, which isn't on sudo's secure_path, so give sudoedit the full path
-export SUDO_EDITOR="$(command -v nvim)"
 alias snvim='sudoedit'
 
 # Aliases
 alias gh-pages='node $HOME/dotfiles/create_github_pages_workflow.js'
 alias neofetch="fastfetch"
-alias cat="bat"
+# Debian/Ubuntu (WSL) ship bat as 'batcat'
+if command -v batcat &> /dev/null; then alias cat="batcat"; else alias cat="bat"; fi
 alias ls="eza --icons=always -a --group-directories-first --colour=always"
 alias lvim="nvim"
 
@@ -57,6 +56,9 @@ for _brew in /opt/homebrew/bin/brew /usr/local/bin/brew /home/linuxbrew/.linuxbr
 done
 unset _brew
 
+# nvim is from Homebrew, which isn't on sudo's secure_path, so give sudoedit the full path
+export SUDO_EDITOR="$(command -v nvim)"
+
 # replaces the ctrl + r
 function zvm_after_init() {
   source <(fzf --zsh)
@@ -70,6 +72,7 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+if [[ -d "$HOME/miniconda3" ]]; then
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -84,5 +87,8 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+fi
+
+[[ -d "$HOME/.cargo/bin" ]] && export PATH="$HOME/.cargo/bin:$PATH"
 
 export PATH="$HOME/.local/bin:$PATH"

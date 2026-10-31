@@ -1,10 +1,11 @@
 #!/bin/zsh
 
-# Check if 'bat' is installed
-if ! command -v nala &> /dev/null; then
+# nala is an apt frontend, so only relevant on Debian/Ubuntu (WSL)
+if ! command -v apt-get &> /dev/null; then
+  echo "Not an apt system, skipping nala."
+elif ! command -v nala &> /dev/null; then
   echo "Nala not found. Installing..."
 
-  # Update the package list and install 'bat'
   sudo apt update
   sudo apt install -y nala 
 

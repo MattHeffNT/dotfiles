@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 install_zsh() {
 
   # zsh install
@@ -37,9 +38,10 @@ install_homebrew_and_packages() {
     # Install Homebrew
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-    # Add Homebrew to PATH in ~/.bashrc or ~/.zshrc
-    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>~/.zshrc
-    source ~/.zshrc
+    # Load Homebrew into this shell (dot_zshrc handles it for future shells)
+    for b in /opt/homebrew/bin/brew /usr/local/bin/brew /home/linuxbrew/.linuxbrew/bin/brew; do
+      [[ -x $b ]] && { eval "$($b shellenv)"; break; }
+    done
 
     echo "Homebrew installed successfully."
 

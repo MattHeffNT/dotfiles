@@ -6,12 +6,12 @@ install_conda() {
 
   # Install Conda
   mkdir -p ~/miniconda3
-  wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+  [[ "$OSTYPE" == darwin* ]] && os=MacOSX || os=Linux
+  curl -fsSL "https://repo.anaconda.com/miniconda/Miniconda3-latest-$os-$(uname -m).sh" -o ~/miniconda3/miniconda.sh
   bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
   rm -f ~/miniconda3/miniconda.sh
 
-  # Initialize Conda
-  ~/miniconda3/bin/conda init zsh
+  # no `conda init` — dot_zshrc already has the init block
 
   echo "Conda installed successfully."
 }
@@ -31,12 +31,6 @@ install_nvm() {
   nvm install --lts
   nvm use --lts
 
-  # Ensure NVM source lines are in .zshrc
-  if ! grep -q "export NVM_DIR=\"$HOME/.nvm\"" ~/.zshrc; then
-    echo "export NVM_DIR=\"$HOME/.nvm\"" >> ~/.zshrc
-    echo "[ -s \"$NVM_DIR/nvm.sh\" ] && \. \"$NVM_DIR/nvm.sh\"" >> ~/.zshrc
-  fi
-
   echo "Node Version Manager installed and latest LTS version of Node.js activated."
 }
 
@@ -49,11 +43,6 @@ install_rust() {
 
   # Source Cargo environment variables
   export PATH="$HOME/.cargo/bin:$PATH"
-
-  # Ensure Cargo source lines are in .zshrc
-  if ! grep -q "export PATH=\"$HOME/.cargo/bin:\$PATH\"" ~/.zshrc; then
-    echo "export PATH=\"$HOME/.cargo/bin:\$PATH\"" >> ~/.zshrc
-  fi
 
   echo "Rust and Cargo installed successfully."
 }
@@ -83,7 +72,13 @@ fi
 
 # Check and install make 
 if ! command -v make &> /dev/null; then
-  sudo apt-get update && sudo apt-get install make
+  if command -v pacman &> /dev/null; then
+    sudo pacman -S --needed make
+  elif command -v apt-get &> /dev/null; then
+    sudo apt-get update && sudo apt-get install make
+  else
+    xcode-select --install
+  fi
 else
-  echo "Cargo is already installed."
+  echo "make is already installed."
 fi
