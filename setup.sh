@@ -36,9 +36,9 @@ install_homebrew_and_packages() {
     # Install Homebrew
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-    # Add Homebrew to PATH in ~/.bashrc or ~/.zshrc
-    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>~/.zshrc
-    source ~/.zshrc
+    # Make brew available for the rest of this script
+    # (~/.zprofile, applied by chezmoi, sets it up for future shells)
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
     echo "Homebrew installed successfully."
 
