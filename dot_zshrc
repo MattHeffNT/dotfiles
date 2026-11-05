@@ -37,7 +37,7 @@ fi
 alias gh-pages='node $HOME/dotfiles/create_github_pages_workflow.js'
 alias neofetch="macchina"
 ## if debian based
-alias cat="batcat"
+alias cat="bat"
 
 # if Arch (btw) based
 # alias cat="bat"
