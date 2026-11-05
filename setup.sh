@@ -6,7 +6,8 @@ install_zsh() {
     echo "zsh not found. Installing..."
 
     #install zsh
-    sudo apt-get update && sudo apt install zsh
+    # sudo apt-get update && sudo apt install zsh
+    sudo pacman -Suy && sudo pacman -S zsh
 
     #Make zsh the default shell
     chsh -s $(which zsh)
@@ -19,6 +20,8 @@ install_zsh() {
 
   fi
 
+  # get omz
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 }
 
 # Function to install Homebrew and packages
@@ -56,6 +59,7 @@ install_homebrew_and_packages() {
     fi
   fi
 }
+
 
 # Function to apply chezmoi configuration
 

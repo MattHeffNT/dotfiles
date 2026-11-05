@@ -36,11 +36,17 @@ fi
 # Aliases
 alias gh-pages='node $HOME/dotfiles/create_github_pages_workflow.js'
 alias neofetch="macchina"
-alias updateAll="sudo nala update && sudo nala upgrade"
+## if debian based
 alias cat="batcat"
+
+# if Arch (btw) based
+# alias cat="bat"
+
 alias ls="eza --icons=always -a --group-directories-first --colour=always"
 alias lvim="nvim"
 alias clip="xclip selection clipboard"
+p
+
 
 # Load nvm if installed
 export NVM_DIR="${XDG_CONFIG_HOME:-$HOME/.nvm}"
